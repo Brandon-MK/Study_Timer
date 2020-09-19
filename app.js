@@ -49,6 +49,8 @@ function CheckIfAtZero(){
 
         console.log("STOPPED");
         clearInterval(refreshIntervalId);
+
+        alert("TIMER FINISHED, TAKE A BREAK AND COME BACK IN A FEW MINUTES! :D :P")
     }
 
 }
