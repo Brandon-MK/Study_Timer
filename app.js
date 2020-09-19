@@ -7,7 +7,7 @@ const inputMins = document.querySelector("input")
 
 var secondsLeft;
 var isNotAtZero = true; //Setting this to true on load;
-
+var refreshIntervalId;
 
 function Countdown(){
 
@@ -48,14 +48,14 @@ function CheckIfAtZero(){
     if(secondsLeft == 0){
 
         console.log("STOPPED");
-
+        clearInterval(refreshIntervalId);
     }
 
 }
 
 function Start(){
 
-    if(inputMins.value == null || inputMins.value == 0 || inputMins.value == undefined){
+    if(inputMins.value == 0 && !(secondsLeft > 1)){
         
         //IF NO VALUE IS INPUTTED GOING WITH 25 MINUTES AS DEFUALT
         secondsLeft = 1500;
@@ -65,10 +65,21 @@ function Start(){
 
         //THE USER HAS ENTERED A VALUE OF MINUTES
 
-        secondsLeft = (inputMins.value * 60);
+        secondsLeft = Math.ceil(inputMins.value * 60);
+    }else if(secondsLeft > 1){
+
+        //THE TIMER HAS BEEN STOPED AND THE USER HAS REQUESTED TO START IT AGAIN FROM WHERE THEY WERE
+
     }
 
-    setInterval(Countdown, 1000);
+    refreshIntervalId = setInterval(Countdown, 1000);
+    inputMins.value = null;
 
+}
+
+function Stop(){
+
+
+    clearInterval(refreshIntervalId);
 
 }
