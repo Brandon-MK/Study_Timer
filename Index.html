@@ -20,14 +20,16 @@
 
     </div>
 
-    <script src="app.js"></script>
-    <div class="w3-card-4"
-        style="padding-top: 10px;padding-bottom: 20px;margin-top: 150px;width: 300px;margin-left: 500px;"><input
+    <div class="w3-card-4" style="padding-top: 10px;padding-bottom: 20px;margin-top: 150px;width: 300px;margin-left: 500px;">
+        <input
             type="number" class="w3-input w3-black" style="width: 250px;margin-left: 25px;margin-top: 20px;"
-            placeholder="Enter your Study Time">
-        <Button class="w3-btn w3-green" style="margin-left:95px ;margin-top: 20px;">Start Time</Button>
+            placeholder="Enter your Study Time" id="timeInput">
+
+        <Button class="w3-btn w3-green" style="margin-left:95px ;margin-top: 20px;" onclick="Start()">Start Time</Button>
         <Button class="w3-btn w3-red" style="margin-left:95px ;margin-top: 20px;">Stop Time</Button>
     </div>
+
+    <script src="app.js"></script>
 </body>
 
 </html>

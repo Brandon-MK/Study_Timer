@@ -2,13 +2,15 @@ console.log("**STUDY TIMER BY BRANDON_MK & DANIELJCODE**")
 const timerDisplay = document.getElementById("display");
 const startStop = document.getElementById("buttonIDHERE"); //TODO add the button id once it gets added to the html
 
-var secondsIn25mins = 1500;
-var secondsLeft = secondsIn25mins;
+const inputMins = document.querySelector("input")
 
+
+var secondsLeft;
 var isNotAtZero = true; //Setting this to true on load;
 
 
 function Countdown(){
+
 
     console.log("------- STUDY TIMER INFO -------")
 
@@ -26,7 +28,7 @@ function Countdown(){
     DisplayDataToUser(seconds, minutes);
     CheckIfAtZero();
 
-}setInterval(Countdown, 1000);
+}
 
 function DisplayDataToUser(secondslft, minuteslft){
  
@@ -51,11 +53,22 @@ function CheckIfAtZero(){
 
 }
 
-startStop.addEventListener("click" ()=>{
+function Start(){
 
-    //THE START BUTTON WAS CLICKED
-    //TODO
-        //CHANGE THE START BUTTON INTO THE STOP BUTTON ONCE CLICKED
-        //START THE COUNTDOWN
+    if(inputMins.value == null || inputMins.value == 0 || inputMins.value == undefined){
+        
+        //IF NO VALUE IS INPUTTED GOING WITH 25 MINUTES AS DEFUALT
+        secondsLeft = 1500;
 
-})
+    }
+    else if(inputMins.value >= 1){
+
+        //THE USER HAS ENTERED A VALUE OF MINUTES
+
+        secondsLeft = (inputMins.value * 60);
+    }
+
+    setInterval(Countdown, 1000);
+
+
+}
