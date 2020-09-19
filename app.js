@@ -1,10 +1,11 @@
 console.log("**STUDY TIMER BY BRANDON_MK & DANIELJCODE**")
 const timerDisplay = document.getElementById("display");
+const startStop = document.getElementById("buttonIDHERE"); //TODO add the button id once it gets added to the html
 
 var secondsIn25mins = 1500;
-var millisecondsIn25mins = 1500 * 1000
-
 var secondsLeft = secondsIn25mins;
+
+var isNotAtZero = true; //Setting this to true on load;
 
 
 function Countdown(){
@@ -23,13 +24,13 @@ function Countdown(){
     console.log(`seconds left (This cycle): ${seconds}`);
 
     DisplayDataToUser(seconds, minutes);
+    CheckIfAtZero();
 
 }setInterval(Countdown, 1000);
 
 function DisplayDataToUser(secondslft, minuteslft){
  
      
-
     if(secondslft < 10){
 
         timerDisplay.innerHTML = `${minuteslft}:0${secondslft}`;//Adding a zero before the seconds if the seconds value is less than 10 (9, 8, 7, etc)
@@ -38,3 +39,23 @@ function DisplayDataToUser(secondslft, minuteslft){
         timerDisplay.innerHTML = `${minuteslft}:${secondslft}`;   
     }
 }
+
+
+function CheckIfAtZero(){
+
+    if(secondsLeft == 0){
+
+        console.log("STOPPED");
+
+    }
+
+}
+
+startStop.addEventListener("click" ()=>{
+
+    //THE START BUTTON WAS CLICKED
+    //TODO
+        //CHANGE THE START BUTTON INTO THE STOP BUTTON ONCE CLICKED
+        //START THE COUNTDOWN
+
+})
