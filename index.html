@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
-
+    
     <title>Study timer</title>
 </head>
 
-<body>
+<body onload="TurnAllDials()">
 
     <div class="w3-container w3-black" style="margin-top: -7px;">
 
-        <h2 id="txt">Study timer By Brandon-MK & danieljcode</h2>
+        <h2 id="txt">Study timer By Brandon-MK, danieljcode & constantineMelios</h2>
 
     </div>
 
@@ -23,12 +23,18 @@
             </p></span>
         <input type="number" class="w3-input w3-black" style="width: 250px;margin-left: 25px;margin-top: 20px;"
             id="timeInput" placeholder="Amount of minutes">
+        <input type="number" class="w3-input w3-black" style="width: 250px;margin-left: 25px;margin-top: 20px;" id="timeInput"
+            placeholder="Short break">
+        <input type="number" class="w3-input w3-black" style="width: 250px;margin-left: 25px;margin-top: 20px;" id="timeInput"
+            placeholder="Long break">
 
         <Button class="w3-btn w3-green" style="margin-left:auto; margin-top: 20px;" onclick="Start()">Start
             Time</Button>
         <Button class="w3-btn w3-red" style="margin-left:auto ;margin-top: 20px;" onclick="Stop()">Stop Time</Button>
+        
     </div>
 
+    
     <script src="app.js"></script>
 </body>
 
