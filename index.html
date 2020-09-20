@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
-    
+    <link rel="icon" href="./download.jpg">
     <title>Study timer</title>
 </head>
 
@@ -21,13 +21,18 @@
         style="padding-top: 25px;padding-bottom: 20px;margin-top: 100px;margin-left: auto;margin-bottom: auto;margin-right: auto;width: 300px;">
         <span class="w3-center" style="margin-top: -45px;">Time left: <span class="w3-tag w3-blue" id="display">00:00</span>
             </p></span>
-        <input type="number" class="w3-input w3-black" style="width: 250px;margin-left: 25px;margin-top: 20px;"
+            <label><h4>Enter the Minutes</h4></label>
+        <input type="number" class="w3-input w3-black" style="width: 250px;margin-left: 25px;"
             id="timeInput" placeholder="Minutes (default 25)">
 
             <div>
             <label id="label1" style="display: block; margin-top: 8px;">Long break (10 mins): </label>
         <input type="checkbox" class="w3-input w3-black" style="display:block; width: 250px;margin-left: 25px;margin-top: 2px;" id="shortlong"
             placeholder="Short break">
+        </div>
+        <h4>Completed Time</h4>
+        <div class="w3-progress-container w3-light-blue" style="width: 200px;margin: auto;margin-top: 10px;">
+            <div class="w3-progressbar w3-blue w3-round" style="width:75%" id="progress">75%</div>
         </div>
 
         <Button class="w3-btn w3-green" style="margin-left:auto; margin-top: 20px;" onclick="Start()">Start
