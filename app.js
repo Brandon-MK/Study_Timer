@@ -35,9 +35,11 @@ function DisplayDataToUser(secondslft, minuteslft){
     if(secondslft < 10){
 
         timerDisplay.innerHTML = `${minuteslft}:0${secondslft}`;//Adding a zero before the seconds if the seconds value is less than 10 (9, 8, 7, etc)
+        document.title = `STUDY TIMER - ${minuteslft}:0${secondslft}`;
 
     }else{
-        timerDisplay.innerHTML = `${minuteslft}:${secondslft}`;   
+        timerDisplay.innerHTML = `${minuteslft}:${secondslft}`;  
+        document.title = `STUDY TIMER - ${minuteslft}:${secondslft}`
     }
 }
 
@@ -49,8 +51,7 @@ function CheckIfAtZero(){
         console.log("STOPPED");
         clearInterval(refreshIntervalId);
 
-        secondsLeft = 300; //FIVE MINUTES
-        refreshIntervalId = setInterval(Countdown, 1000);
+        alert("TIMES UP! your break timer will now start automatically!")
 
         if(!shortBreak.checked){
             //THE USER HAS OPTED FOR A SHORT BREAK
@@ -86,7 +87,7 @@ function Start(){
     }else if(secondsLeft > 1){
 
         //THE TIMER HAS BEEN STOPED AND THE USER HAS REQUESTED TO START IT AGAIN FROM WHERE THEY WERE
-
+        clearInterval(refreshIntervalId);
     }
 
     refreshIntervalId = setInterval(Countdown, 1000);
