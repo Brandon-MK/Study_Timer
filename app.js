@@ -50,16 +50,15 @@ function UpdateProgressbar(){
 
     const progressbar = document.getElementById("progress");
 
-    console.log(secondsLeftAtStart); //HOW MANY SECONDS THERE WERE WHEN COUNTDOWN STARTED
-
-    var prog = Math.floor(+(secondsLeft / secondsLeftAtStart) * 100)
+    //console.log(secondsLeftAtStart); //HOW MANY SECONDS THERE WERE WHEN COUNTDOWN STARTED
+    var prog = Math.floor(+(secondsLeft / secondsLeftAtStart) * 100) //CALCULATING THE PROGRESS EACH SECOND
 
     //Displaying the progress to the user
     progressbar.setAttribute("style", `width:${prog}%`)
     progressbar.innerHTML = `${prog}%`;
 
 
-    console.log("Current Progress: " + Math.floor(+(secondsLeft / secondsLeftAtStart) * 100));
+    console.log("Current Progress left: " + Math.floor(+(secondsLeft / secondsLeftAtStart) * 100));
 
 }
 
