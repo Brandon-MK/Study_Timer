@@ -2,8 +2,8 @@ console.log("**STUDY TIMER BY BRANDON_MK & DANIELJCODE**")
 const timerDisplay = document.getElementById("display");
 const startStop = document.getElementById("buttonIDHERE"); //TODO add the button id once it gets added to the html
 
-const inputMins = document.querySelector("input")
-
+const inputMins = document.querySelector("input");
+const shortBreak = document.getElementById("shortlong");
 
 let secondsLeft;
 let isNotAtZero = true; //Setting this to true on load;
@@ -44,14 +44,24 @@ function DisplayDataToUser(secondslft, minuteslft){
 
 function CheckIfAtZero(){
 
-    if(secondsLeft == 0){
+    if(secondsLeft <= 0){
 
         console.log("STOPPED");
         clearInterval(refreshIntervalId);
 
-        alert("TIMER FINISHED, TAKE A BREAK AND COME BACK IN A FEW MINUTES! :D :P")
-    }
+        secondsLeft = 300; //FIVE MINUTES
+        refreshIntervalId = setInterval(Countdown, 1000);
 
+        if(!shortBreak.checked){
+            //THE USER HAS OPTED FOR A SHORT BREAK
+            secondsLeft = 300; //FIVE MINUTES
+
+        }else{
+            //THE USER HAS OPTED FOR A LONG BREAK
+            secondsLeft = 600; //TEN MINUTES
+
+        }
+    }
 }
 
 function Start(){
@@ -72,6 +82,7 @@ function Start(){
         //THE USER HAS ENTERED A VALUE OF MINUTES
 
         secondsLeft = Math.ceil(inputMins.value * 60);
+        inputMins.value = 0;
     }else if(secondsLeft > 1){
 
         //THE TIMER HAS BEEN STOPED AND THE USER HAS REQUESTED TO START IT AGAIN FROM WHERE THEY WERE
