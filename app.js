@@ -1,6 +1,5 @@
 console.log("**STUDY TIMER BY BRANDON_MK & DANIELJCODE**")
 const timerDisplay = document.getElementById("display");
-const startStop = document.getElementById("buttonIDHERE"); //TODO add the button id once it gets added to the html
 
 const inputMins = document.querySelector("input");
 const shortBreak = document.getElementById("shortlong");
@@ -9,6 +8,8 @@ let secondsLeft;
 let isNotAtZero = true; //Setting this to true on load;
 let refreshIntervalId;
 let isRunning = false
+
+var secondsLeftAtStart;
 
 function Countdown(){
     console.log("------- STUDY TIMER INFO -------")
@@ -41,6 +42,25 @@ function DisplayDataToUser(secondslft, minuteslft){
         timerDisplay.innerHTML = `${minuteslft}:${secondslft}`;  
         document.title = `STUDY TIMER - ${minuteslft}:${secondslft}`
     }
+
+    UpdateProgressbar();
+}
+
+function UpdateProgressbar(){
+
+    const progressbar = document.getElementById("progress");
+
+    console.log(secondsLeftAtStart); //HOW MANY SECONDS THERE WERE WHEN COUNTDOWN STARTED
+
+    var prog = Math.floor(+(secondsLeft / secondsLeftAtStart) * 100)
+
+    //Displaying the progress to the user
+    progressbar.setAttribute("style", `width:${prog}%`)
+    progressbar.innerHTML = `${prog}%`;
+
+
+    console.log("Current Progress: " + Math.floor(+(secondsLeft / secondsLeftAtStart) * 100));
+
 }
 
 
@@ -56,11 +76,12 @@ function CheckIfAtZero(){
         if(!shortBreak.checked){
             //THE USER HAS OPTED FOR A SHORT BREAK
             secondsLeft = 300; //FIVE MINUTES
+            secondsLeftAtStart = (secondsLeft); //SETTING THE NUMBER OF SECONDS AT THE START SO THE PROGRESS BAR CAN CALCULATE THE DIFFERENCE BETWEEN THE SECONDS LEFT AND THE SECONDS AT THE START
 
         }else{
             //THE USER HAS OPTED FOR A LONG BREAK
             secondsLeft = 600; //TEN MINUTES
-
+            secondsLeftAtStart = (secondsLeft);
         }
 
         refreshIntervalId = setInterval(Countdown, 1000);
@@ -78,7 +99,7 @@ function Start(){
         
         //IF NO VALUE IS INPUTTED GOING WITH 25 MINUTES AS DEFUALT
         secondsLeft = 1500;
-
+        secondsLeftAtStart = (secondsLeft);
     }
     else if(inputMins.value >= 1){
 
@@ -86,10 +107,13 @@ function Start(){
 
         secondsLeft = Math.ceil(inputMins.value * 60);
         inputMins.value = 0;
+        secondsLeftAtStart = (secondsLeft);
+
     }else if(secondsLeft > 1){
 
         //THE TIMER HAS BEEN STOPED AND THE USER HAS REQUESTED TO START IT AGAIN FROM WHERE THEY WERE
         clearInterval(refreshIntervalId);
+
     }
 
     refreshIntervalId = setInterval(Countdown, 1000);
