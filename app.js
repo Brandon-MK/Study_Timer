@@ -5,24 +5,23 @@ const startStop = document.getElementById("buttonIDHERE"); //TODO add the button
 const inputMins = document.querySelector("input")
 
 
-var secondsLeft;
-var isNotAtZero = true; //Setting this to true on load;
-var refreshIntervalId;
+let secondsLeft;
+let isNotAtZero = true; //Setting this to true on load;
+let refreshIntervalId;
+let isRunning = false
 
 function Countdown(){
-
-
     console.log("------- STUDY TIMER INFO -------")
 
     secondsLeft = (secondsLeft - 1);
     console.log(`seconds left (In total): ${secondsLeft}`);
 
-    var mind = secondsLeft % (60 * 60);
-    var minutes = Math.floor(mind / 60);
+    const mind = secondsLeft % (60 * 60);
+    const minutes = Math.floor(mind / 60);
     console.log(`Minutes left (In total):  ${minutes}`);
 
-    var secd = secondsLeft % 60;
-    var seconds = Math.ceil(secd);
+    const secd = secondsLeft % 60;
+    const seconds = Math.ceil(secd);
     console.log(`seconds left (This cycle): ${seconds}`);
 
     DisplayDataToUser(seconds, minutes);
@@ -56,6 +55,11 @@ function CheckIfAtZero(){
 }
 
 function Start(){
+    //does not start new interval if 
+    if (isRunning) {
+        return;
+    }
+    isRunning = true
 
     if(inputMins.value == 0 && !(secondsLeft > 1)){
         
@@ -80,8 +84,7 @@ function Start(){
 }
 
 function Stop(){
-
-
+    isRunning = false
     clearInterval(refreshIntervalId);
 
 }
