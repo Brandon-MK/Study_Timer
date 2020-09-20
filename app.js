@@ -62,6 +62,8 @@ function CheckIfAtZero(){
             secondsLeft = 600; //TEN MINUTES
 
         }
+
+        refreshIntervalId = setInterval(Countdown, 1000);
     }
 }
 
